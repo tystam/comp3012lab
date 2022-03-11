@@ -1,7 +1,9 @@
 package base;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.Objects;
-public class Folder {
+public class Folder implements Comparable<Note> {
 	private ArrayList<Note> notes;
 	private String name;
 	
@@ -19,6 +21,16 @@ public class Folder {
 	}
 	
 	public ArrayList<Note> getNotes(){
+		return notes;
+	}
+	
+	public void sortNotes() {
+		//TO Do
+		Collections.sort(notes);
+	}
+	
+	public List<Note> searchNotes(String keywords){
+		//TODO
 		return notes;
 	}
 
@@ -50,6 +62,19 @@ public class Folder {
 			nImage++;
 		}
 		return name + ":" + nText + ":" + nImage;
+	}
+	
+	@Override
+	public int compareTo(Note o) {
+		//TODO Auto-generated method stub
+		if(this.name.compareTo(o.getTitle())>0) {
+			return 1;
+		}
+		else if(this.name.compareTo(o.getTitle())<0) {
+			return -1;
+		}
+		else 
+			return 0;
 	}
 	
 }

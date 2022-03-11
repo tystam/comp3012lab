@@ -1,6 +1,7 @@
 package base;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class NoteBook {
 	private ArrayList<Folder> folders;
@@ -43,5 +44,15 @@ public class NoteBook {
 		}
 		note = new Note(note.getTitle());
 		return true;
+	}
+	
+	public void sortFolders() {
+		//TODO
+		
+	}
+	
+	public List<Note> searchNotes(String keywords){
+		//TODO
+		Folder.searchNotes(keywords);
 	}
 }
