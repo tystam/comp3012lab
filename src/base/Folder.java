@@ -40,13 +40,13 @@ public class Folder implements Comparable<Note> {
 		int cnt = 0;
 		while (m1.find()||m2.find()) {
 			if(cnt == 0) {
-				if(m1.find())
-					m1.group(1), m1.group(2)
-			}
-			else {
-				m1.group(2)
-			}
-				
+				if(m1.find()) {
+					boolean val1 = notes.content.contains(m1.group(1));
+					boolean val2 = notes.content.contains(m1.group(2));
+					if(val1 == true || val2 == true)
+						return notes;
+				}
+			}	
 		    cnt++;
 		}
 		return notes;
