@@ -3,6 +3,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 public class Folder implements Comparable<Note> {
 	private ArrayList<Note> notes;
 	private String name;
@@ -31,6 +33,22 @@ public class Folder implements Comparable<Note> {
 	
 	public List<Note> searchNotes(String keywords){
 		//TODO
+		Pattern p1 = Pattern.compile(Pattern.quote("(?U)(\\w+)\\W+or\\W+(\\w+)"), Pattern.CASE_INSENSITIVE);
+		Pattern p2 = Pattern.compile(Pattern.quote("(?U)(\\w+)\\W+\s\\W+(\\w+)"), Pattern.CASE_INSENSITIVE);
+		Matcher m1 = p1.matcher(keywords);
+		Matcher m2 = p2.matcher(keywords);
+		int cnt = 0;
+		while (m1.find()||m2.find()) {
+			if(cnt == 0) {
+				if(m1.find())
+					m1.group(1), m1.group(2)
+			}
+			else {
+				m1.group(2)
+			}
+				
+		    cnt++;
+		}
 		return notes;
 	}
 
@@ -58,7 +76,7 @@ public class Folder implements Comparable<Note> {
 		if(this.getNotes() instanceof TextNote) {
 			nText++;
 		}
-		else if (this instanceof ImageNote) {
+		else if (this.getNotes() instanceof ImageNote) {
 			nImage++;
 		}
 		return name + ":" + nText + ":" + nImage;

@@ -1,6 +1,7 @@
 package base;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class NoteBook {
@@ -48,7 +49,9 @@ public class NoteBook {
 	
 	public void sortFolders() {
 		//TODO
-		
+		for(Folder f1:folders) {
+			f1.sortNotes();
+		}
 	}
 	
 	public List<Note> searchNotes(String keywords){
